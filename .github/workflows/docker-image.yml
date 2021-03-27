@@ -12,13 +12,13 @@ jobs:
       - name: set tag
         id: tag
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      - name: docker hub login
+      - name: login
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN }}
-      - name: build and push paperspigot
+      - name: build and push
         uses: docker/build-push-action@v2
         with:
           push: true
