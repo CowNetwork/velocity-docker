@@ -1,6 +1,5 @@
-FROM  adoptopenjdk/openjdk11:alpine-slim AS builder
+FROM  gcr.io/distroless/java:11
 WORKDIR /opt/velocity
 ARG version
 ADD https://versions.velocitypowered.com/download/$version.jar /opt/velocity/proxy.jar
-RUN apk --update add --no-cache ca-certificates
-CMD java -jar spigot.jar
+CMD ["proxy.jar"]
